@@ -32,8 +32,8 @@ ShopEase is a modern, full-featured e-commerce platform built with the MERN stac
 ### 1. Clone the Repository
 
 ```sh
-git clone https://github.com/YOUR-USERNAME/ShopEase.git
-cd ShopEase
+git clone https://github.com/Partha7797/mern-ecommerce.git
+cd mern-ecommerce
 ```
 
 ### 2. Setup the Backend
