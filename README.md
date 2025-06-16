@@ -63,12 +63,17 @@ npm run dev
 
 Create a `.env` file in the `server` directory with the following:
 
-```
-MONGODB_URI=your_mongodb_connection_string
-CLIENT_SECRET_KEY=your_jwt_secret
-EMAIL_USER=your_email_address
-EMAIL_PASS=your_email_password
-```
+| Variable Name           | Description                                  |
+| ----------------------- | -------------------------------------------- |
+| `MONGODB_URI`           | MongoDB Atlas connection string              |
+| `CLOUDINARY_CLOUD_NAME` | Cloudinary cloud name for image uploads      |
+| `CLOUDINARY_API_KEY`    | Cloudinary API key                           |
+| `CLOUDINARY_API_SECRET` | Cloudinary API secret                        |
+| `PAYPAL_MODE`           | PayPal mode (`sandbox` or `live`)            |
+| `PAYPAL_CLIENT_ID`      | PayPal REST API client ID                    |
+| `PAYPAL_CLIENT_SECRET`  | PayPal REST API client secret                |
+| `EMAIL_USER`            | Email address for sending OTPs/notifications |
+| `EMAIL_PASS`            | Email password or app password               |
 
 ---
 
