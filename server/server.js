@@ -34,7 +34,11 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-  res.send("Welcome to the E-commerce API");
+  res.send({
+    activeStatus: "Server is running",
+    error: false,
+    message: "Welcome to the MERN E-commerce API",
+  });
 });
 
 app.use(cookieParser());
