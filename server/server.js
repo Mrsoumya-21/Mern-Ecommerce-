@@ -33,6 +33,10 @@ app.use(
   })
 );
 
+app.get("/", (req, res) => {
+  res.send("Welcome to the E-commerce API");
+});
+
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth", authRouter);
