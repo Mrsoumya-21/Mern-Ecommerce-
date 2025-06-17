@@ -67,8 +67,8 @@ function VerifyOTP() {
     setLoading(true);
     const endpoint =
       context === "register"
-        ? `${baseUrl}/api/auth/register-verify-otp`
-        : `${baseUrl}/api/auth/login-verify-otp`;
+        ? `${baseUrl}api/auth/register-verify-otp`
+        : `${baseUrl}api/auth/login-verify-otp`;
     let data;
     try {
       const res = await fetch(endpoint, {
