@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// Use environment variable for API base URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const initialState = {
   isLoading: false,
   productList: [],
@@ -18,7 +21,7 @@ export const fetchAllFilteredProducts = createAsyncThunk(
     });
 
     const result = await axios.get(
-      `http://localhost:5000/api/shop/products/get?${query}`
+      `${API_BASE_URL}/api/shop/products/get?${query}`
     );
 
     console.log(result);
@@ -31,7 +34,7 @@ export const fetchProductDetails = createAsyncThunk(
   "/products/fetchProductDetails",
   async (id) => {
     const result = await axios.get(
-      `http://localhost:5000/api/shop/products/get/${id}`
+      `${API_BASE_URL}/api/shop/products/get/${id}`
     );
 
     return result?.data;

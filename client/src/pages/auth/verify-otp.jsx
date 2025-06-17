@@ -3,6 +3,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
 import logo from "@/assets/logo192.png";
 
+// Use environment variable for API base URL
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
 function VerifyOTP() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -64,8 +67,8 @@ function VerifyOTP() {
     setLoading(true);
     const endpoint =
       context === "register"
-        ? "http://localhost:5000/api/auth/register-verify-otp"
-        : "http://localhost:5000/api/auth/login-verify-otp";
+        ? `${baseUrl}/api/auth/register-verify-otp`
+        : `${baseUrl}/api/auth/login-verify-otp`;
     let data;
     try {
       const res = await fetch(endpoint, {
@@ -95,8 +98,8 @@ function VerifyOTP() {
     setResendLoading(true);
     let endpoint =
       context === "register"
-        ? "http://localhost:5000/api/auth/register-resend-otp"
-        : "http://localhost:5000/api/auth/login-resend-otp";
+        ? `${baseUrl}/api/auth/register-resend-otp`
+        : `${baseUrl}/api/auth/login-resend-otp`;
     let data;
     try {
       const res = await fetch(endpoint, {

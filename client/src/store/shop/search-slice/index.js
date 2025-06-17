@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// Use environment variable for API base URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const initialState = {
   isLoading: false,
   searchResults: [],
@@ -10,7 +13,7 @@ export const getSearchResults = createAsyncThunk(
   "/order/getSearchResults",
   async (keyword) => {
     const response = await axios.get(
-      `http://localhost:5000/api/shop/search/${keyword}`
+      `${API_BASE_URL}/api/shop/search/${keyword}`
     );
 
     return response.data;

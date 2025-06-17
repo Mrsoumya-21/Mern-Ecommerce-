@@ -1,6 +1,9 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+// Use environment variable for API base URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const initialState = {
   cartItems: { items: [] }, // Ensure cartItems is always an object with items array
   isLoading: false,
@@ -9,14 +12,11 @@ const initialState = {
 export const addToCart = createAsyncThunk(
   "cart/addToCart",
   async ({ userId, productId, quantity }) => {
-    const response = await axios.post(
-      "http://localhost:5000/api/shop/cart/add",
-      {
-        userId,
-        productId,
-        quantity,
-      }
-    );
+    const response = await axios.post(`${API_BASE_URL}/api/shop/cart/add`, {
+      userId,
+      productId,
+      quantity,
+    });
     return response.data;
   }
 );
@@ -25,7 +25,7 @@ export const fetchCartItems = createAsyncThunk(
   "cart/fetchCartItems",
   async (userId) => {
     const response = await axios.get(
-      `http://localhost:5000/api/shop/cart/get/${userId}`
+      `${API_BASE_URL}/api/shop/cart/get/${userId}`
     );
     return response.data;
   }
@@ -35,7 +35,7 @@ export const deleteCartItem = createAsyncThunk(
   "cart/deleteCartItem",
   async ({ userId, productId }) => {
     const response = await axios.delete(
-      `http://localhost:5000/api/shop/cart/${userId}/${productId}`
+      `${API_BASE_URL}/api/shop/cart/${userId}/${productId}`
     );
     // Return productId so we can update state even if backend response is not correct
     return { ...response.data, productId };
@@ -46,7 +46,7 @@ export const updateCartQuantity = createAsyncThunk(
   "cart/updateCartQuantity",
   async ({ userId, productId, quantity }) => {
     const response = await axios.put(
-      "http://localhost:5000/api/shop/cart/update-cart",
+      `${API_BASE_URL}/api/shop/cart/update-cart`,
       {
         userId,
         productId,

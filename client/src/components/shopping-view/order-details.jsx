@@ -5,12 +5,15 @@ import { Label } from "../ui/label";
 import { Separator } from "../ui/separator";
 import { Button } from "@/components/ui/button";
 
+// Use environment variable for API base URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function ShoppingOrderDetailsView({ orderDetails }) {
   const { user } = useSelector((state) => state.auth);
 
   function handleDownloadInvoice() {
     window.open(
-      `http://localhost:5000/api/shop/order/invoice/${orderDetails?._id}`,
+      `${API_BASE_URL}/api/shop/order/invoice/${orderDetails?._id}`,
       "_blank"
     );
   }
@@ -88,9 +91,7 @@ function ShoppingOrderDetailsView({ orderDetails }) {
         </div>
       </div>
       <div className="flex justify-end mt-4">
-        <Button onClick={handleDownloadInvoice}>
-          Download Invoice
-        </Button>
+        <Button onClick={handleDownloadInvoice}>Download Invoice</Button>
       </div>
     </DialogContent>
   );

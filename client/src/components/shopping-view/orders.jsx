@@ -19,6 +19,9 @@ import {
 } from "@/store/shop/order-slice";
 import { Badge } from "../ui/badge";
 
+// Use environment variable for API base URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function ShoppingOrders() {
   const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
   const dispatch = useDispatch();
@@ -60,7 +63,7 @@ function ShoppingOrders() {
           <TableBody>
             {orderList && orderList.length > 0
               ? orderList.map((orderItem) => (
-                  <TableRow>
+                  <TableRow key={orderItem?._id}>
                     <TableCell>{orderItem?._id}</TableCell>
                     <TableCell>{orderItem?.orderDate.split("T")[0]}</TableCell>
                     <TableCell>
@@ -99,7 +102,7 @@ function ShoppingOrders() {
                         className="mt-2"
                         onClick={() =>
                           window.open(
-                            `http://localhost:5000/api/shop/order/invoice/${orderItem?._id}`,
+                            `${API_BASE_URL}/api/shop/order/invoice/${orderItem?._id}`,
                             "_blank"
                           )
                         }
