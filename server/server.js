@@ -28,7 +28,7 @@ const PORT = process.env.PORT || 5000;
 // CORS settings to allow credentials
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://mern-ecommerce-yszy.vercel.app"], // Your frontend URL
+    origin: ["http://localhost:5173", "https://mern-ecommerce-s62e.vercel.app"], // Your frontend URL
     credentials: true, // Allow cookies and credentials
   })
 );
