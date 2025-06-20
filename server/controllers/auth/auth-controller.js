@@ -77,7 +77,7 @@ const verifyRegisterOTP = async (req, res) => {
       message: "Registration verified. You can now login.",
     });
   } catch (e) {
-    console.log(e);
+    console.error("Error in verifyRegisterOTP:", e);
     res.status(500).json({
       success: false,
       message: "Some error occured",
@@ -172,7 +172,7 @@ const verifyLoginOTP = async (req, res) => {
       },
     });
   } catch (e) {
-    console.log(e);
+    console.error("Error in verifyLoginOTP:", e);
     res.status(500).json({
       success: false,
       message: "Some error occured",

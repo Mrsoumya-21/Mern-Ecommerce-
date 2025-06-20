@@ -28,7 +28,7 @@ const PORT = process.env.PORT || 5000;
 // CORS settings to allow credentials
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://mern-ecommerce-s62e.vercel.app"], // Your frontend URL
+    origin: "http://localhost:5173", // Your frontend URL
     credentials: true, // Allow cookies and credentials
   })
 );
@@ -39,6 +39,12 @@ app.get("/", (req, res) => {
     error: false,
     message: "Welcome to the MERN E-commerce API",
   });
+});
+
+// Logging middleware to debug incoming requests
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  next();
 });
 
 app.use(cookieParser());
